@@ -1,20 +1,33 @@
-# через generic view-класс:
-from rest_framework import generics
-
+# через generic viewSet:
+from rest_framework import viewsets
+ 
 from .models import Cat
 from .serializers import CatSerializer
 
 
-class CatList(generics.ListCreateAPIView):
+class CatViewSet(viewsets.ModelViewSet):
     queryset = Cat.objects.all()
     serializer_class = CatSerializer
 
+#__________________________________________________________________
 
-class CatDetail(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Cat.objects.all()
-    serializer_class = CatSerializer
+# через generic view-класс:
+# from rest_framework import generics
+
+# from .models import Cat
+# from .serializers import CatSerializer
 
 
+# class CatList(generics.ListCreateAPIView):
+#     queryset = Cat.objects.all()
+#     serializer_class = CatSerializer
+
+
+# class CatDetail(generics.RetrieveUpdateDestroyAPIView):
+#     queryset = Cat.objects.all()
+#     serializer_class = CatSerializer
+
+#__________________________________________________________________
 
 # через view-класс:
 # from rest_framework.views import APIView
@@ -37,7 +50,7 @@ class CatDetail(generics.RetrieveUpdateDestroyAPIView):
 #             return Response(serializer.data, status=status.HTTP_201_CREATED) 
 #         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-
+#__________________________________________________________________
 
 # через view-функции:
 # from rest_framework import status
